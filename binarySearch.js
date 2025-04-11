@@ -13,5 +13,6 @@ function binary(arr,target){
             right=middleIndex-1
         }
     }
+    return -1
 }
-console.log(binary([-5,2,4,6,10],10))
+console.log(binary([-5,2,4,6,10],15))

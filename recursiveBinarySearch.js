@@ -18,4 +18,4 @@ function search(arr,target,leftIndex,rightIndex){
     }
 
 }
-console.log(binarySearch([-5,2,4,6,10],4))
+console.log(binarySearch([-5,2,4,6,10],15))
