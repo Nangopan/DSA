@@ -40,4 +40,3 @@
 // }
 // console.log(vowCons("Helloo friend"))
 
-function s

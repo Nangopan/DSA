@@ -7,7 +7,10 @@ function duplicates(arr){
         if(uniq.has(arr[i])){
             duplicate.add(arr[i])
         }else{
-            uniq.add(arr[i])
+            
+                uniq.add(arr[i])
+            
+           
         }
         
     }

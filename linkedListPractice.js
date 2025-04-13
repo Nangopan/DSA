@@ -96,9 +96,9 @@ class linkedList{
         return res
     }
     removeDuplicates(){
-        let curr=this.head
         let set=new Set()
         let prev=null
+        let curr=this.head
         while(curr){
             if(set.has(curr.value)){
                 prev.next=curr.next
@@ -109,7 +109,8 @@ class linkedList{
                 prev=curr
             }
             curr=curr.next
-        }
+        } 
+
     }
     findDuplicates(){
         let curr=this.head
@@ -124,23 +125,23 @@ class linkedList{
         }
         return [...duplicates]
     }
-    // insert(value,index){
-    //     if(index<0||index>this.size){
-    //         return console.log("enter valid index")
-    //     }
-    //     if(this.size===0){
-    //         this.prepend(value)
-    //     }else{
-    //         let node=new Node(value)
-    //         let prev=this.head
-    //         for(let i=0;i<=index-2;i++){
-    //             prev=prev.next
-    //         }
-    //         node.next=prev.next
-    //         prev.next=node
-    //     }
-    //     this.size++
-    // }
+    insert(value,index){
+        if(index<0||index>this.size){
+            return console.log("enter valid index")
+        }
+        if(this.size===0){
+            this.prepend(value)
+        }else{
+            let node=new Node(value)
+            let prev=this.head
+            for(let i=0;i<=index-2;i++){
+                prev=prev.next
+            }
+            node.next=prev.next
+            prev.next=node
+        }
+        this.size++
+    }
     removeByIndex(index){
         if(index<0||index>this.size){
             return console.log("invalid index")
@@ -160,64 +161,59 @@ class linkedList{
         }
         // return value
     }
-    removeVal(value){
-        if(this.isEmpty()){
-
-            this.head=this.head.next
-
-        }else{
-            let prev=this.head
-            while(prev&&prev.next.value!==value){
-                prev=prev.next
-            }
-            if(prev){
-                let removeNode=prev.next
-                prev.next=prev.next.next
-            }
-            return null
+    removeVal(val){
+     if(this.isEmpty()){
+        return console.log("no elements")
+     }
+     else{
+         let prev=this.head
+        while(prev&&prev.next.value!=val){
+              prev=prev.next
         }
-        this.size--
+        prev.next=prev.next.next
+     }
+     this.size--
     }
-    removeIndex(index){
-        if(index<0||index>this.size){
-            return console.log("invalid index")
-        }if(index===0){
-            this.head=this.head.next
-        }else{
-            let prev=this.head
-            for(let i=0;i<=index-2;i++){
-                prev=prev.next
-            }
-            prev.next=prev.next.next
-        } this.size--
-    }
+   removeIndex(index){
+    if(index<0||index>this.size){
+        return console.log("invalid index")
+    }else{
+        let prev=this.head
+        
+        for(let i=0;i<index-2;i++){
+            prev=prev.next
+        }
+         
+        prev.next=prev.next.next
+    }this.size--
+    
+   }
     search(value){
         if(this.isEmpty()){
-            return console.log("no elements to search")
-        }
-        else{
+            return console.log("empty")
+        }else{
             let i=0
             let curr=this.head
             while(curr){
                 if(curr.value===value){
                     return i
-                } i++
+                }
+                i++
                 curr=curr.next
             }
-            return -1
         }
     }
-    reverse(){
-        let curr=this.head
-        let prev=null
-        while(curr){
-           let next=curr.next
-            curr.next=prev
-           prev=curr
-            curr=next
-        }
-        this.head=prev
+   reverse(){
+    let curr=this.head
+    let prev=null
+    while(curr){
+        let next=curr.next
+        curr.next=prev
+        prev=curr
+        curr=next
     }
+    this.head=prev
+   }
 }
 let list=new linkedList()
 list.append(30)
@@ -227,14 +223,15 @@ list.append(40)
 list.prepend(30)
 list.print()
 list.reverse()
+list.removeVal(10)
 
-// list.removeDuplicates()
+list.removeDuplicates()
 // console.log(list.findDuplicates())
 // list.insert(20,2)
 // list.LlToArray()
-list.print()
-// list.removeByIndex(3)
-// list.removeIndex(0)
 // list.print()
+// list.removeByIndex(3)
+// console.log(list.removeIndex(2))
+list.print()
 // console.log(list.getSize())
-console.log(list.search(20))
+// console.log(list.search(10))
