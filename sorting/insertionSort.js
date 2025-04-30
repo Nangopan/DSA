@@ -10,4 +10,4 @@ function insertion(arr){
     }
     return arr
 }
-console.log(insertion([0,1,25,30,10,5,8]))
+console.log(insertion([0,1,25,30,10,5,8])) 
