@@ -31,4 +31,14 @@ class Trie{
         }
         return currNode.endofword
     }
+    startWith(prefix){
+      let node=this.root
+      for(let char of prefix){
+        if(!node.children[char]){
+            return false
+        }
+         node=node.children[char]
+      }
+      return true
+    }
 }

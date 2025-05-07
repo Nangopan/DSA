@@ -38,6 +38,29 @@ class Graph{
         }
         delete this.adjacencyList[vertex]
     }
+    bfs(start){
+     let visited=new Set()
+     let queue=[start]
+     visited.add(start)
+     while(queue.length){
+        let vertex=queue.shift()
+        for(let neighbour of this.adjacencyList[vertex]){
+            if(!visited.has(vertex)){
+                visited.add(vertex)
+                queue.push(neighbour)
+            }
+        }
+     }
+    }
+    dfs(start,visited=new Set()){
+        visited.add(start)
+        console.log(start)
+        for(let n of this.adjacencyList[start]){
+            if(!visited.has(n)){
+                this.dfs(n,visited)
+            }
+        }
+    }
 }
 let graph=new Graph()
 graph.addEdges("A","B")

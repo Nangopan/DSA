@@ -127,6 +127,91 @@ search(root,value){
             }
             return root
         }
+        height(node){
+        if(!node){
+            return 0
+        }else{
+            let leftHeight=this.height(node.left)
+            let rightHeight=this.height(node.right)
+            return Math.max(leftHeight,rightHeight)+1
+        }
+        }
+        isBST(node,min,max){
+            if(!node){
+                return true
+            }
+            if(node.value>max || node.value<min){
+                return false
+            }
+            return(
+                this.isBST(node.left,min,node.value)
+               && this.isBST(node.right,node.value,max) 
+        )
+        }
+        isIdentical(tree1,tree2){
+            if(!tree1 && !tree2){
+                return true
+            }
+            if(!tree1 || !tree2){
+                return false
+            }
+            return(
+                tree1.value===tree2.value &&
+                this.isIdentical(tree1.left,tree1.left) &&
+                this.isIdentical(tree1.right,tree2.right)
+            )
+        }
+        print(){
+            console.log(this.root)
+        }
+        inorderT(root,res=[]){
+            this.inorderT(root.left,res)
+            res.push(root.value)
+            this.inorder(root.right,res)
+        }
+        kthSmallest(root,k){
+            if(!root){
+                return null
+            }
+            let res=this.inorderT(root)
+            return res[k-1]||null
+        }
+        kthLargest(root,k){
+            if(!root){
+                return null
+            }
+            let res=this.inorderT(root)
+            return res[res.length-k]||null
+        }
+        successor(root,value){
+            if(!root){
+                return null
+            }
+            let res=this.inorderT(root)
+            let successor=null
+            for(let i=0;i<res.length-1;i++){
+                if(res[i]===value && (i+1)<res.length){
+                    successor=res[i+1]
+                    break
+                }
+                
+            }
+            return successor
+        }
+        predecessor(root,value){
+            if(!root){
+                return null
+            }
+            let res=this.inorder(root)
+            let predecessor=null
+            for(let i=0;i<res.length;i++){
+                if(res[i-1]===value && (i-1)>=0){
+                    predecessor=res[i-1]
+                    break
+                }
+                return predecessor
+            }
+        }
 }
 const binary=new binaryTree()
 binary.insert(10)
