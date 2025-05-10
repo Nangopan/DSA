@@ -6,7 +6,7 @@ class Graph{
         this.adjacencyList[vertex]=new Set()
     }
     insertEdges(v1,v2){
-        if(!this.adjacencyList[v1]){
+        if(!this.adjacencyList[v1]){       
             this.insert(v1)
         }
         if(!this.adjacencyList[v2]){
